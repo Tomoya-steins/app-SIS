@@ -1,14 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
+  ScrollView,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default HomeScreen = (props) => {
   const { navigation } = props;
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.Title}>
-        <Text style={styles.TitleText}>SIS</Text>
-        <Text style={styles.TitleTextmini}>Sharing Information at School</Text>
+        <Text style={styles.TitleText}>S I S</Text>
       </View>
       <TouchableOpacity style={styles.settingIcon}>
         <Ionicons
@@ -18,21 +25,16 @@ export default HomeScreen = (props) => {
           onPress={() => navigation.navigate("設定")}
         />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.logoutIcon}>
-        <AntDesign
-          name="logout"
-          size={45}
-          color="#ee8572"
-          onPress={() => navigation.navigate("ログイン")}
-        />
-      </TouchableOpacity>
       <View style={styles.ItemContainer1}>
         <Text style={styles.TextHome}>ホーム</Text>
       </View>
       <View style={styles.ItemContainer2}>
         <Text style={styles.TextHome}>メッセージ</Text>
       </View>
-    </View>
+      <ScrollView horizontal pagingEnabled style={{ flex: 1 }}>
+        <View style={styles.test} />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -55,22 +57,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   TitleText: {
-    fontSize: 33,
+    fontSize: 35,
     color: "#fff",
-  },
-  TitleTextmini: {
-    color: "#fff",
-    fontSize: 22,
   },
   settingIcon: {
     position: "absolute",
-    top: 40,
+    top: 35,
     left: 18,
-  },
-  logoutIcon: {
-    position: "absolute",
-    top: 45,
-    right: 12,
   },
   ItemContainer1: {
     position: "absolute",
@@ -99,5 +92,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#eff3c6",
     paddingTop: 8,
     alignItems: "center",
+  },
+  test: {
+    position: "absolute",
+    backgroundColor: "gray",
+    top: 200,
+    width: "50%",
+    height: 1300,
+    left: "25%",
+    borderWidth: 1,
   },
 });
